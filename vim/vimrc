@@ -2,7 +2,7 @@
 
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -22,11 +22,10 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/SyntaxComplete.git'
 Plugin 'kchmck/vim-coffee-script'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'scrooloose/syntastic'
+Plugin 'mxw/vim-jsx'
 
 
 " Color Themes
@@ -119,6 +118,9 @@ set completeopt=menuone,longest,preview
 
 " CtrlP
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
 
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
