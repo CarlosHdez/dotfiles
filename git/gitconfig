@@ -1,0 +1,19 @@
+[user]
+  email=carloseye11@gmail.com
+  name=CarlosHdez
+[core]
+  editor=vim
+  repositoryformatversion=0
+  filemode=true
+  bare=false
+  logallrefupdates=true
+  excludesfile=~/.gitignore
+[alias]
+  tree=log --graph --oneline --decorate --all --abbrev-commit
+  co=checkout
+  ci=commit
+  st=status
+  fe=fetch
+  ai=add -p
+  br=branch
+  cb=checkout -b
