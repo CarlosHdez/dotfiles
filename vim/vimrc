@@ -32,6 +32,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'mxw/vim-jsx'
 
 "Plugin 'scrooloose/syntastic'
+Plugin 'joshdick/onedark.vim'
 
 
 " Color Themes
@@ -46,7 +47,7 @@ syntax enable
 " autocmd vimenter * NERDTree
 
 " Toggle NERDTree
-map <C-a> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeToggle<CR>
 
 " Close NERDTree when thats the last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -134,10 +135,20 @@ let g:jsx_ext_required = 0
 " Ultisnip
 " NOTE: <f1> otherwise it overrides <tab> forever
 "let g:UltiSnipsExpandTrigger="<f1>"
-let g:UltiSnipsJumpForwardTrigger="<c-x>"
+"let g:UltiSnipsJumpForwardTrigger="<c-x>"
 "let g:UltiSnipsJumpBackwardTrigger="<f1>"
 "let g:did_UltiSnips_vim_after = 1
 "let g:UltiSnipsExpandTrigger="<f1>"
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " vim-airline
@@ -159,14 +170,14 @@ let g:tcomment#replacements_xml={}
 " Text wrap simpler, then type the open tag or ',"
 vmap <C-w> S
 " Tabs
-let g:airline_theme='badwolf'
+let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled = 1
-nnoremap <C-b>  :tabprevious<CR>
-inoremap <C-b>  <Esc>:tabprevious<CR>i
-nnoremap <C-n>  :tabnext<CR>
-inoremap <C-n>  <Esc>:tabnext<CR>i
-nnoremap <C-t>  :tabnew<CR>
-inoremap <C-t>  <Esc>:tabnew<CR>i
+"nnoremap <C-b>  :tabprevious<CR>
+"inoremap <C-b>  <Esc>:tabprevious<CR>i
+"nnoremap <C-n>  :tabnext<CR>
+"inoremap <C-n>  <Esc>:tabnext<CR>i
+"nnoremap <C-t>  :tabnew<CR>
+"inoremap <C-t>  <Esc>:tabnew<CR>i
 "nnoremap <C-k>  :tabclose<CR>
 "inoremap <C-k>  <Esc>:tabclose<CR>i
 
@@ -182,4 +193,3 @@ noremap  <Leader>g :GitGutterToggle<CR>
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
