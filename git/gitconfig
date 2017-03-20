@@ -17,3 +17,4 @@
   ai=add -p
   br=branch
   cb=checkout -b
+  d= diff
