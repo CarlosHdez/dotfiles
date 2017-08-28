@@ -22,7 +22,7 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/SyntaxComplete.git'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'vim-scripts/CSApprox'
+
 " Cobalt2 Theme
 Plugin 'herrbischoff/cobalt2.vim'
 Plugin 'Valloric/YouCompleteMe'
