@@ -22,17 +22,13 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/SyntaxComplete.git'
 Plugin 'kchmck/vim-coffee-script'
-
-" Cobalt2 Theme
-Plugin 'herrbischoff/cobalt2.vim'
-Plugin 'Valloric/YouCompleteMe'
-
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'mxw/vim-jsx'
-
-"Plugin 'scrooloose/syntastic'
-Plugin 'joshdick/onedark.vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'scrooloose/syntastic'
+Plugin 'vimwiki/vimwiki'
+Plugin 'leafOfTree/vim-vue-plugin'
 
 
 " Color Themes
@@ -41,13 +37,13 @@ colorscheme anotherdark
 
 """"""""
 filetype plugin indent on
-syntax enable
+syntax on
 
 " Open NERDTree by default
 " autocmd vimenter * NERDTree
 
 " Toggle NERDTree
-map <C-b> :NERDTreeToggle<CR>
+map <C-a> :NERDTreeToggle<CR>
 
 " Close NERDTree when thats the last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -119,6 +115,8 @@ inoremap <C-c> <Esc>
 
 set completeopt=menuone,longest,preview
 
+set foldmethod=indent
+
 "
 " Plugins config
 "
@@ -129,27 +127,12 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
 
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
-
 " Ultisnip
 " NOTE: <f1> otherwise it overrides <tab> forever
-"let g:UltiSnipsExpandTrigger="<f1>"
-"let g:UltiSnipsJumpForwardTrigger="<c-x>"
-"let g:UltiSnipsJumpBackwardTrigger="<f1>"
-"let g:did_UltiSnips_vim_after = 1
-"let g:UltiSnipsExpandTrigger="<f1>"
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsExpandTrigger="<f1>"
+let g:UltiSnipsJumpForwardTrigger="<f1>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:did_UltiSnips_vim_after = 1
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -160,26 +143,37 @@ let g:airline_powerline_fonts = 1
 "  most in visual mode / selection (v or ⇧ v)
 "
 
+" Find
+map <C-f> /
 " indend / deindent after selecting the text with (⇧ v), (.) to repeat.
-" vnoremap <Tab> >
-" vnoremap <S-Tab> <
+vnoremap <Tab> >
+vnoremap <S-Tab> <
 " comment / decomment & normal comment behavior
 vmap <C-m> gc
 " Disable tComment to escape some entities
 let g:tcomment#replacements_xml={}
 " Text wrap simpler, then type the open tag or ',"
 vmap <C-w> S
+" Cut, Paste, Copy
+vmap <C-x> d
+vmap <C-v> p
+vmap <C-c> y
+" Undo, Redo (broken)
+nnoremap <C-z>  :undo<CR>
+inoremap <C-z>  <Esc>:undo<CR>
+nnoremap <C-y>  :redo<CR>
+inoremap <C-y>  <Esc>:redo<CR>
 " Tabs
-let g:airline_theme='onedark'
+let g:airline_theme='badwolf'
 let g:airline#extensions#tabline#enabled = 1
-"nnoremap <C-b>  :tabprevious<CR>
-"inoremap <C-b>  <Esc>:tabprevious<CR>i
-"nnoremap <C-n>  :tabnext<CR>
-"inoremap <C-n>  <Esc>:tabnext<CR>i
-"nnoremap <C-t>  :tabnew<CR>
-"inoremap <C-t>  <Esc>:tabnew<CR>i
-"nnoremap <C-k>  :tabclose<CR>
-"inoremap <C-k>  <Esc>:tabclose<CR>i
+nnoremap <C-b>  :tabprevious<CR>
+inoremap <C-b>  <Esc>:tabprevious<CR>i
+nnoremap <C-n>  :tabnext<CR>
+inoremap <C-n>  <Esc>:tabnext<CR>i
+nnoremap <C-t>  :tabnew<CR>
+inoremap <C-t>  <Esc>:tabnew<CR>i
+nnoremap <C-k>  :tabclose<CR>
+inoremap <C-k>  <Esc>:tabclose<CR>i
 
 " lazy ':'
 map \ :
@@ -193,3 +187,10 @@ noremap  <Leader>g :GitGutterToggle<CR>
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+" Vimwiki
+" let wiki = {}
+" let wiki.path = 'PATH_TO_WIKI_FOLDER'
+" let wiki.index = 'main'
+" let g:vimwiki_list = [wiki]
+
