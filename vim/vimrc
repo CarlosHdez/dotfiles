@@ -29,6 +29,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'scrooloose/syntastic'
 Plugin 'vimwiki/vimwiki'
 Plugin 'leafOfTree/vim-vue-plugin'
+Plugin 'tpope/vim-sleuth'
 
 
 " Color Themes
@@ -47,6 +48,7 @@ map <C-a> :NERDTreeToggle<CR>
 
 " Close NERDTree when thats the last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeShowHidden=1
 
 " Use :help 'option' to see the documentation for the given option.
 set autoindent
